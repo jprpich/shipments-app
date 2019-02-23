@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Vendor.destroy_all
+Order.destroy_all
+100.times do 
+  Vendor.create(name: Faker::Company.name)
+end

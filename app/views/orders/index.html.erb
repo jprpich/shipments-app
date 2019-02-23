@@ -1,0 +1,20 @@
+<h1>Shipment App</h1>
+<a href="/orders/new">Create Order</a>
+<table>
+  <tr>
+    <th>Order Number</td>
+    <th>Tacking Number</td>
+    <th>Address</td>
+    <th>Shipped At</th>
+    <th>Delivered At</th>
+  </tr>
+  <% @orders.each do |order| %> 
+    <tr>
+      <td><%= order.number %></td>
+      <td><%= order.tracking_number %></td>
+      <td><%= order.address %></td>
+      <td><%= order.shipped_at %></td>
+      <td><%= order.delivered_at %></td>
+    </tr>
+  <% end %>
+</table>
