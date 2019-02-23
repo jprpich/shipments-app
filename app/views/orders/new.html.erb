@@ -1,4 +1,13 @@
-<h1>Create Order</h1>
+<div class="order-form">
+  <% if flash[:errors] %>
+      <ul>
+        <% flash[:errors].each do |error|  %>
+          <li><%= error %></li>
+        <% end %>
+      </ul>
+      
+    <% end %>
+  <h1>Create Order</h1>
 <form action="/orders" method="post">
   <input
     type="hidden"
@@ -57,3 +66,5 @@
 </form>
 
 <a href="/orders">Back</a>
+
+</div>

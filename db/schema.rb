@@ -10,18 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_23_154645) do
+ActiveRecord::Schema.define(version: 2019_02_23_190837) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "orders", force: :cascade do |t|
-    t.integer "number", null: false
+    t.string "number", null: false
     t.integer "vendor_id", null: false
-    t.integer "tracking_number", null: false
+    t.string "tracking_number", null: false
     t.string "address", null: false
-    t.datetime "shipped_at"
-    t.datetime "delivered_at"
+    t.date "shipped_at"
+    t.date "delivered_at"
     t.index ["vendor_id"], name: "index_orders_on_vendor_id"
   end
 
