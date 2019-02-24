@@ -1,8 +1,14 @@
 class OrdersController < ApplicationController 
 
   def index
-    @orders = Order.all.includes(:vendor, :location) 
     @deliveries = Delivery.all
+    if params[:number].present? 
+      @orders = Order.by_number(params[:number]).includes(:vendor, :location)
+    elsif params[:address].present?
+      @orders = Order.by_address(params[:address]).includes(:vendor, :location)
+    else
+      @orders = Order.all.includes(:vendor, :location) 
+    end
   end
 
   def new

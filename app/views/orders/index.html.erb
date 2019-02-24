@@ -6,6 +6,23 @@
     Create Order
     </div>
   </a>
+
+  <form action="/orders" method="get">
+    <label for="order_number">Number</label>
+    <input
+      type="text"
+      name="number"
+      id="order_number"
+     >
+    <br>
+    <label for="order_address">Address</label>
+    <input
+      type="text"
+      name="address"
+      id="order_address"
+     >
+    <input type="submit" value="search">
+  </form>
   
 <table>
   <tr>
@@ -21,36 +38,38 @@
     <th>Normal Time</th>
     <th>Report</th>
   </tr>
-  <% @orders.each do |order| %> 
-    <tr>
-      <td><%= order.number %></td>
-      <td><%= order.tracking_number %></td>
-      <td><%= order.vendor.name %></td>
-      <td><%= order.address %></td>
-      <td><%= order.location.city %></td>
-      <td><%= order.shipped_at.strftime("%B %e, %Y") %></td>
-      <% if order.delivered_at %>
-        <td><%= order.delivered_at.strftime("%B %e, %Y") %></td>
-      <% else %>
-        <td>Not-Delivered</td>
-      <% end %>
-      <% if order.delivered_at > Time.now.to_date %>
-        <td class="pending">Pending</td>
-      <% else %>
-        <td>Delivered</td>
-      <% end %>
-      <% current_time = current_delivery_time(order)  %>
-      <% normal_time =  normal_time(@deliveries, order) %>
-      <td><%= current_time %></td>
-      <td><%= normal_time %></td>
-      <% if current_time <= normal_time %>
-        <td>Normal </td>
-      <% elsif current_time <= normal_time + 2 %>
-        <td class="not-normal">Not Normal</td>
-      <% else  %>
-        <td class="very-late">Very Late</td>
-      <% end %>
-    </tr>
+  <% if @orders %>
+    <% @orders.each do |order| %> 
+      <tr>   
+        <td><%= order.number %></td>
+        <td><%= order.tracking_number %></td>
+        <td><%= order.vendor.name %></td>
+        <td><%= order.address %></td>
+        <td><%= order.location.city %></td>
+        <td><%= order.shipped_at.strftime("%B %e, %Y") %></td>
+        <% if order.delivered_at %>
+          <td><%= order.delivered_at.strftime("%B %e, %Y") %></td>
+        <% else %>
+          <td>Not-Delivered</td>
+        <% end %>
+        <% if order.delivered_at > Time.now.to_date %>
+          <td class="pending">Not Delivered</td>
+        <% else %>
+          <td>Delivered</td>
+        <% end %>
+        <% current_time = current_delivery_time(order)  %>
+        <% normal_time =  normal_time(@deliveries, order) %>
+        <td><%= current_time %> days</td>
+        <td><%= normal_time %> days</td>
+        <% if current_time <= normal_time %>
+          <td>Normal </td>
+        <% elsif current_time <= normal_time + 2 %>
+          <td class="not-normal">Not Normal</td>
+        <% else  %>
+          <td class="very-late">Very Late</td>
+        <% end %>
+      </tr>
+    <% end %>
   <% end %>
 </table>
 </div>

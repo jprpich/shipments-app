@@ -45,6 +45,17 @@
       </option>
     <% end %>
   </select>
+
+  <label for="vendor">Vendor</label>
+  <select class="select-style" name="order[vendor_id]" id="vendor">
+    <option disabled selected>-- select a vendor --</option>
+    <% Vendor.all.each do |vendor| %>
+      <option
+        value="<%= vendor.id %>">
+        <%= vendor.name %>
+      </option>
+    <% end %>
+  </select>
   <br>
 
   <label for="order_shipped_at">Shipped At</label>
@@ -59,18 +70,6 @@
     name="order[delivered_at]"
     id="order_delivered_at"
   >
-  <br>
-
-  <label for="vendor">Vendor</label>
-  <select class="select-style" name="order[vendor_id]" id="vendor">
-    <option disabled selected>-- select a vendor --</option>
-    <% Vendor.all.each do |vendor| %>
-      <option
-        value="<%= vendor.id %>">
-        <%= vendor.name %>
-      </option>
-    <% end %>
-  </select>
   <br>
 
   <input type="submit" value="Create Order">

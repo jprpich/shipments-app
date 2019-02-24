@@ -3,4 +3,6 @@ class Order < ApplicationRecord
   belongs_to :vendor
   belongs_to :location
 
+  scope :by_number, -> (number) { where('number LIKE ?', "%#{number}%") }
+  scope :by_address, -> (address) { where('lower(address) LIKE ?', "%#{address}%") }
 end
