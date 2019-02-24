@@ -3,8 +3,13 @@ Order.destroy_all
 Location.destroy_all 
 Delivery.destroy_all 
 
+
+random_latitude = 51.501564
+random_longitude = -0.141944
 10.times do 
-  Location.create(city: Faker::Address.city)
+  Location.create(city: Faker::Address.city,  latitude: random_latitude,longitude: random_longitude)
+  random_latitude += 0.05
+  random_longitude -= 0.01
 end
 
 10.times do 

@@ -1,0 +1,15 @@
+<% provide :head_tags do %>
+  <meta name='turbolinks-visit-control' content='reload'>
+  <script>
+    document.addEventListener("DOMContentLoaded", function(){
+      initMap(<%=@order.location.latitude%>, <%=@order.location.longitude%>)
+    });
+  </script>
+<% end %>
+
+<div class="orders-index">
+  <p>
+    <div id="map"></div>
+  </p>
+</div>
+
