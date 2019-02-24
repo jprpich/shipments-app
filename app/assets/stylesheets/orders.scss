@@ -1,63 +1,30 @@
 .orders-index {
-  width: 1200px;
-  margin: 0 auto;
-  .pending {
-    background: #FFDC00;
-  }
-  .very-late {
-    background: #FF4136;
-  }
-  .not-normal {
-    background: #FF851B;
-  }
-  a {
-    display: block;
-    text-align: center;
-    width: 120px;
-    color: #535353;
-    font-size: 20px;
-    text-decoration: none;
-    border: 2px solid #78c9a3;
-    padding: 8px 5px;
-    border-radius: 5px;
-    margin-bottom: 20px;
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
   }
   
-  a:hover {
-    color: white;
-    background: #78c9a3;
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
   }
-
-  .search-form {
-    box-shadow: 6px 6px 6px -2px rgba(0,0,0,0.12);
-    background: white;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 2px;
-    width: 200px;
-    input[type=text], select {
-      width: 100%;
-      padding: 6px 10px;
-      margin: 8px 0;
-      display: inline-block;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      box-sizing: border-box;
-    }
-    input[type=submit] {
-      width: 100%;
-      background-color: #78c9a3;
-      color: white;
-      padding: 7px 10px;
-      margin: 8px 0;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    input[type=submit]:hover {
-      background-color: #67ad8b;
-    }
-
+  
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  width: 1200px;
+  margin: 40px auto;
+  .pending {
+    background: rgb(247, 239, 188);
+  }
+  .very-late {
+    background: rgb(216, 132, 127);
+  }
+  .not-normal {
+    background: rgb(223, 164, 118);
   }
 }
 

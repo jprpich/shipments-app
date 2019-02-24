@@ -10,7 +10,44 @@
   </head>
 
   <body>
-    
+    <nav>
+      <a href="/orders">
+        <h2>Shipment Dashboard</h2>
+      </a> 
+      <a class="create-order-button" href="/orders/new">
+        Create Order
+      </a>
+      <form class= "search-form" action="/orders" method="get">
+        <label for="order_number"></label>
+        <input
+          type="text"
+          name="number"
+          id="order_number"
+          placeholder="Order Number"
+        >
+        <br>
+        <label for="order_address"></label>
+        <input
+          type="text"
+          name="address"
+          id="order_address"
+          placeholder="Address"
+        >
+
+        <label for="vendor"></label>
+        <select class="select-style" name="vendor_id" id="vendor">
+          <option selected value="">-- search by vendor --</option>
+          <% Vendor.all.each do |vendor| %>
+            <option
+              value="<%= vendor.id %>">
+              <%= vendor.name %>
+            </option>
+          <% end %>
+        </select>
+        <br>
+        <input type="submit" value="search">
+      </form>
+    </nav>
     <%= yield %>
   </body>
 </html>
