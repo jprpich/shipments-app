@@ -4,4 +4,30 @@
   .pending {
     background: yellow;
   }
+  .very-late {
+    background: red;
+  }
+  .not-normal {
+    background: orange;
+  }
+  a {
+    color: #535353;
+    font-size: 20px;
+    text-decoration: none;
+  }
+  .create-order-button {
+    border: 2px solid #78c9a3;
+    padding: 8px 5px;
+    width: 120px;
+    margin-bottom: 20px;
+    text-align: center;
+    border-radius: 5px;
+    
+  }
+  a:hover {
+    color: white;
+    .create-order-button {
+      background: #78c9a3;
+    }
+  }
 }

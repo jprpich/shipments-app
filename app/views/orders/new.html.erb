@@ -1,12 +1,11 @@
 <div class="order-form">
   <% if flash[:errors] %>
-      <ul>
-        <% flash[:errors].each do |error|  %>
-          <li><%= error %></li>
-        <% end %>
-      </ul>
-      
-    <% end %>
+    <ul>
+      <% flash[:errors].each do |error|  %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  <% end %>
   <h1>Create Order</h1>
 <form action="/orders" method="post">
   <input
@@ -29,12 +28,24 @@
   >
   <br>
 
-  <label for="order_address">Address</label>
+  <label for="order_address">Street Address</label>
   <input
     type="text"
     name="order[address]"
     id="order_address"
   >
+
+  <label for="location">City</label>
+  <select name="order[location_id]" id="location">
+    <option disabled selected>-- select a city --</option>
+    <% Location.all.each do |location| %>
+      <option
+        value="<%= location.id %>">
+        <%= location.city %>
+      </option>
+    <% end %>
+  </select>
+  <br>
 
   <label for="order_shipped_at">Shipped At</label>
   <input
