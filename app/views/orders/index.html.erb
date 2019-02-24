@@ -39,13 +39,13 @@
       <% else %>
         <td>Delivered</td>
       <% end %>
-      <% delivery_time = (order.delivered_at - order.shipped_at).to_i %> 
-      <% normal_time = @deliveries.where(location_id: order.location.id, vendor_id: order.vendor.id).first.normal_time %>
-      <td><%= delivery_time %></td>
+      <% current_time = current_delivery_time(order)  %>
+      <% normal_time =  normal_time(@deliveries, order) %>
+      <td><%= current_time %></td>
       <td><%= normal_time %></td>
-      <% if delivery_time < normal_time %>
+      <% if current_time <= normal_time %>
         <td>Normal </td>
-      <% elsif delivery_time == normal_time %>
+      <% elsif current_time <= normal_time + 2 %>
         <td class="not-normal">Not Normal</td>
       <% else  %>
         <td class="very-late">Very Late</td>

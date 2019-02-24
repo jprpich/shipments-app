@@ -36,7 +36,7 @@
   >
 
   <label for="location">City</label>
-  <select name="order[location_id]" id="location">
+  <select class="select-style" name="order[location_id]" id="location">
     <option disabled selected>-- select a city --</option>
     <% Location.all.each do |location| %>
       <option
@@ -62,7 +62,7 @@
   <br>
 
   <label for="vendor">Vendor</label>
-  <select name="order[vendor_id]" id="vendor">
+  <select class="select-style" name="order[vendor_id]" id="vendor">
     <option disabled selected>-- select a vendor --</option>
     <% Vendor.all.each do |vendor| %>
       <option
