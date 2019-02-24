@@ -6,6 +6,8 @@ class OrdersController < ApplicationController
       @orders = Order.by_number(params[:number]).includes(:vendor, :location)
     elsif params[:address].present?
       @orders = Order.by_address(params[:address]).includes(:vendor, :location)
+    elsif params[:vendor_id].present? 
+      @orders = Order.by_vendor(params[:vendor_id]).includes(:vendor, :location)
     else
       @orders = Order.all.includes(:vendor, :location) 
     end

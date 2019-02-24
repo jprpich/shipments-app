@@ -2,13 +2,13 @@
   <h1>Shipment Dashboard</h1>
   
   <a href="/orders/new">
-    <div class="create-order-button">
     Create Order
-    </div>
   </a>
 
-  <form action="/orders" method="get">
-    <label for="order_number">Number</label>
+  
+  <form class= "search-form" action="/orders" method="get">
+    <h3>Find Orders</h3>
+    <label for="order_number">Order Number</label>
     <input
       type="text"
       name="number"
@@ -21,6 +21,20 @@
       name="address"
       id="order_address"
      >
+
+    <label for="vendor">Vendor</label>
+    <select class="select-style" name="vendor_id" id="vendor">
+      <option selected value="">-- search by vendor --</option>
+      <% Vendor.all.each do |vendor| %>
+        <option
+          value="<%= vendor.id %>">
+          <%= vendor.name %>
+        </option>
+      <% end %>
+    </select>
+    <br>
+
+
     <input type="submit" value="search">
   </form>
   
