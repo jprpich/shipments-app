@@ -21,12 +21,8 @@
           <td><%= order.vendor.name %></td>
           <td><%= order.address %></td>
           <td><a href="orders/<%=order.id %>"><%= order.location.city %></a></td>
-          <td><%= order.shipped_at.strftime("%B %e, %Y") %></td>
-          <% if order.delivered_at %>
-            <td><%= order.delivered_at.strftime("%B %e, %Y") %></td>
-          <% else %>
-            <td>Not-Delivered</td>
-          <% end %>
+          <td><%= order.shipped_at.strftime("%B %e, %Y") %></td> 
+          <td><%= order.delivered_at.strftime("%B %e, %Y") %></td>
           <% if order.delivered_at > Time.now.to_date %>
             <td class="pending">Not Delivered</td>
           <% else %>
