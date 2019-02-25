@@ -1,4 +1,7 @@
 .orders-index {
+  width: 1200px;
+  margin: 40px auto;
+
   table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
@@ -15,14 +18,14 @@
     background-color: #f2f2f2;
   }
   
-  width: 1200px;
-  margin: 40px auto;
   .pending {
     background: #78c9a3;
   }
+
   .very-late {
     background: rgb(245, 245, 196);
   }
+  
   .not-normal {
     background: #cfe2f2;
   }

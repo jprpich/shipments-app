@@ -3,7 +3,6 @@ Order.destroy_all
 Location.destroy_all 
 Delivery.destroy_all 
 
-
 random_latitude = 51.501564
 random_longitude = -0.141944
 20.times do 

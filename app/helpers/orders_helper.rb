@@ -4,6 +4,6 @@ module OrdersHelper
   end
 
   def normal_time(deliveries, order)
-     deliveries.where(location_id: order.location.id, vendor_id: order.vendor.id).first.normal_time 
+     deliveries.find_by(location_id: order.location.id, vendor_id: order.vendor.id).normal_time 
   end
 end

@@ -1,46 +1,47 @@
 <div class="orders-index">
-  <table>
-    <tr>
-      <th>Order Number</td>
-      <th>Tacking Number</td>
-      <th>Vendor</th>
-      <th>Street Address</td>
-      <th>City</th>
-      <th>Shipped On</th>
-      <th>Delivery Date</th>
-      <th>Status</th>
-      <th>Delivery Time</th>
-      <th>Normal Time</th>
-      <th>Report</th>
-    </tr>
-    <% if @orders %>
-      <% @orders.each do |order| %> 
-        <tr>   
-          <td><%= order.number %></td>
-          <td><%= order.tracking_number %></td>
-          <td><%= order.vendor.name %></td>
-          <td><%= order.address %></td>
-          <td><a href="orders/<%=order.id %>"><%= order.location.city %></a></td>
-          <td><%= order.shipped_at.strftime("%B %e, %Y") %></td> 
-          <td><%= order.delivered_at.strftime("%B %e, %Y") %></td>
-          <% if order.delivered_at > Time.now.to_date %>
-            <td class="pending">Not Delivered</td>
-          <% else %>
-            <td>Delivered</td>
-          <% end %>
-          <% current_time = current_delivery_time(order)  %>
-          <% normal_time =  normal_time(@deliveries, order) %>
-          <td><%= current_time %> days</td>
-          <td><%= normal_time %> days</td>
-          <% if current_time <= normal_time %>
-            <td>Normal </td>
-          <% elsif current_time <= normal_time + 2 %>
-            <td class="not-normal">Not Normal</td>
-          <% else  %>
-            <td class="very-late">Very Late</td>
-          <% end %>
-        </tr>
-      <% end %>
+<table>
+  <tr>
+    <th>Order Number</td>
+    <th>Tacking Number</td>
+    <th>Vendor</th>
+    <th>Street Address</td>
+    <th>City</th>
+    <th>Shipped On</th>
+    <th>Delivery Date</th>
+    <th>Status</th>
+    <th>Delivery Time</th>
+    <th>Normal Time</th>
+    <th>Report</th>
+  </tr>
+  <% if @orders %>
+    <% @orders.each do |order| %> 
+      <tr>   
+        <td><%= order.number %></td>
+        <td><%= order.tracking_number %></td>
+        <td><%= order.vendor.name %></td>
+        <td><%= order.address %></td>
+        <td><a href="orders/<%=order.id %>"><%= order.location.city %></a></td>
+        <td><%= order.shipped_at.strftime("%B %e, %Y") %></td> 
+        <td><%= order.delivered_at.strftime("%B %e, %Y") %></td>
+        <% if order.delivered_at > Time.now.to_date %>
+          <td class="pending">Not Delivered</td>
+        <% else %>
+          <td>Delivered</td>
+        <% end %>
+
+        <% current_time = current_delivery_time(order) %>
+        <% normal_time = normal_time(@deliveries, order) %>
+        <td><%= current_time %> days</td>
+        <td><%= normal_time %> days</td>
+        <% if current_time <= normal_time %>
+          <td>Normal</td>
+        <% elsif current_time <= normal_time + 2 %>
+          <td class="not-normal">Not Normal</td>
+        <% else  %>
+          <td class="very-late">Very Late</td>
+        <% end %>
+      </tr>
     <% end %>
-  </table>
+  <% end %>
+</table>
 </div>

@@ -3,10 +3,10 @@
   box-shadow: 6px 6px 6px -2px rgba(0,0,0,0.12);
   background: white;
   padding: 20px;
-  
   border-radius: 2px;
   width: 500px;
   margin: 0 auto;
+
   input[type=text], select {
     width: 100%;
     padding: 12px 20px;
@@ -55,7 +55,7 @@
     width: 120px;
     border-radius: 3px;
     overflow: hidden;
-    }
+  }
 
   .select-style select {
       padding: 5px 8px;
@@ -70,5 +70,4 @@
   .select-style select:focus {
       outline: none;
   }
-   
 }
